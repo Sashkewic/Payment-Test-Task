@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Your Payments App</string>
+    <string name="login">Log in</string>
+    <string name="username">Username</string>
+    <string name="username_text" />
+    <string name="password">Password</string>
+    <string name="exitText">Log Out</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="personalAccountText">Payments</string>
+    <string name="scheduleText">My payments</string>
+    <string name="warningNetworkText">Отсутствует интернет-подключение</string>
+    <string name="repeatText">Повторить</string>
+    <string name="paymentCreated">"Payment created: "</string>
+    <string name="titleOfPayment">Test Payment 1</string>
+    <string name="amountOfPayment">Amount: </string>
+</resources>

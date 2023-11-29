@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyFilledBox">
+        <item name="hintTextColor">#595959</item>
+        <item name="android:textColorHint">#595959</item>
+        <item name="colorControlNormal">#595959</item>
+        <item name="colorControlActivated">#595959</item>
+        <item name="colorControlHighlight">#595959</item>
+    </style>
+</resources>

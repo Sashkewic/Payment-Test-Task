@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="16dp"
+    android:background="@drawable/linear_layout_wrapper_payment_card"
+    app:cardCornerRadius="25dp">
+
+    <LinearLayout
+        android:id="@+id/paymentSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/linear_layout_wrapper_payment_card"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/middle_gray"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/paymentCreatedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/fira_sans_medium"
+                android:text="@string/paymentCreated"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paymentCardWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/linear_layout_payment_card_border"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/dateSection">
+
+            <TextView
+                android:id="@+id/titleOfPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fira_sans_regular"
+                android:text="@string/titleOfPayment"
+                android:textAlignment="center"
+                android:textColor="#2D2D2D"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/amountOfPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/fira_sans_regular"
+                android:text="@string/amountOfPayment"
+                android:textAlignment="center"
+                android:textColor="#686868"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
