@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.payments_test_task_project.databinding.PaymentItemBinding
 import com.example.payments_test_task_project.payments_page.model.Payment
+import com.example.payments_test_task_project.utils.extensions.convertDate
 
 class PaymentsViewHolder(
     private val binding: PaymentItemBinding,
@@ -15,12 +16,13 @@ class PaymentsViewHolder(
     ) : this(
         PaymentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
     )
+
     @SuppressLint("SetTextI18n")
     fun onBind(item: Payment) {
         with(binding) {
-            //            paymentCreatedDate.text = item.created.toString()
+            paymentCreatedDate.text = "Payment created: ${item.created.toString()}"
             titleOfPayment.text = item.title
-//            amountOfPayment.text = item.amount.toString()
+            amountOfPayment.text = "Amount: ${item.amount.toString()}"
         }
     }
 }

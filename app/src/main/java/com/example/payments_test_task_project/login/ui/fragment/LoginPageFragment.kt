@@ -15,6 +15,7 @@ import com.example.payments_test_task_project.payments_page.ui.fragment.Payments
 import com.example.payments_test_task_project.utils.Constants
 import com.example.payments_test_task_project.utils.extensions.replace
 import com.example.payments_test_task_project.utils.viewbinding.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,34 +48,36 @@ class LoginPageFragment : BaseFragment(R.layout.fragment_login_page) {
         viewModel.login(loginUserRequest, appKey = Constants.APP_KEY, v = Constants.V)
 
         viewModel.responseLiveData.observe(viewLifecycleOwner) { response ->
-            // Если запрос был успешен (код 200)
-            when (response.code()) {
-                200 -> response.body().let {
-                    if (response.body()?.response?.token == null) {
-                        Toast.makeText(
-                            context,
-                            "Неправильный юзернейм или пароль, проверьте их и повторите попытку.",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                    else {
-                        val sharedPreference = activity?.getSharedPreferences(
-                            "TOKEN_PREF",
-                            Context.MODE_PRIVATE
-                        )
-
-                        val editor = sharedPreference?.edit()
-                        val token =
-                            response.body()!!.response.token
-
-                        editor?.putString("TOKEN", token)
-                        editor?.apply()
-                    }.let {
-                        let {
-                        }.let { replace(PaymentsPageFragment()) }
-                    }
+            if (response.body()?.response?.token == null) {
+                view?.let {
+                    Snackbar.make(
+                        it,
+                        "Неправильный юзернейм или пароль, проверьте их и повторите попытку.",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
+
+            } else {
+                val sharedPreference = activity?.getSharedPreferences(
+                    "TOKEN_PREF",
+                    Context.MODE_PRIVATE
+                )
+
+                val editor = sharedPreference?.edit()
+                val token =
+                    response.body()!!.response.token
+
+                editor?.putString("TOKEN", token)
+                editor?.apply()
+                view?.let {
+                    Snackbar.make(
+                        it,
+                        "Аутентификация успешна!",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+
+                replace(PaymentsPageFragment())
             }
         }
     }
